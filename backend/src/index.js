@@ -13,6 +13,12 @@ app.use(express.json()); // Parse JSON request bodies
 // Connect to MongoDB
 connectDB();
 
+// Import routes
+const userRoutes = require('./routes/userRoutes');
+
+// Register routes
+app.use('/api/users', userRoutes);
+
 // Health check route
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
