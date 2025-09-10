@@ -15,9 +15,13 @@ connectDB();
 
 // Import routes
 const userRoutes = require('./routes/userRoutes');
+const clubRoutes = require('./routes/clubRoutes'); // NEW
+const eventRoutes = require('./routes/eventRoutes');
 
 // Register routes
 app.use('/api/users', userRoutes);
+app.use('/api/clubs', clubRoutes); // NEW
+app.use('/api/events', eventRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
