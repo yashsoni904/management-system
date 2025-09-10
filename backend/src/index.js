@@ -18,12 +18,14 @@ const userRoutes = require('./routes/userRoutes');
 const clubRoutes = require('./routes/clubRoutes'); 
 const eventRoutes = require('./routes/eventRoutes');
 const vacancyRoutes = require('./routes/vacancyRoutes');
+const applicationRoutes = require('./routes/applicationRoutes');
 
 // Register routes
 app.use('/api/users', userRoutes);
 app.use('/api/clubs', clubRoutes); 
 app.use('/api/events', eventRoutes);
 app.use('/api/vacancies', vacancyRoutes);
+app.use('/api/applications', applicationRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
