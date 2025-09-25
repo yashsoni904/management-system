@@ -8,6 +8,7 @@ import EventList from './components/EventList';
 import VacancyForm from './components/VacancyForm';
 import VacancyList from './components/VacancyList';
 import { useRef } from 'react';
+import Navbar from './components/Navbar'; // ✅ already imported
 
 function App() {
   const userListRef = useRef();
@@ -15,49 +16,55 @@ function App() {
   const eventListRef = useRef();
   const vacancyListRef = useRef();
 
-
   const refreshUsers = () => userListRef.current?.fetchUsers();
   const refreshClubs = () => clubListRef.current?.fetchClubs();
   const refreshEvents = () => eventListRef.current?.fetchEvents();
   const refreshVacancies = () => vacancyListRef.current?.fetchVacancies();
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 p-6">
-      <h1 className="text-xl font-bold">College Club & Event System</h1>
+    <>
+      {/* ✅ Navbar at the very top */}
+      <Navbar />
 
-      <HealthCheck />
+      {/* Main page content */}
+      <div className="min-h-screen bg-gray-50 text-gray-800 p-6">
+        <h1 className="text-xl font-bold">College Club & Event System</h1>
 
-      {/* Users */}
-      <div className="mt-6">
-        <UserForm onUserAdded={refreshUsers} />
-      </div>
-      <div className="mt-6">
-        <UserList ref={userListRef} />
-      </div>
+        <HealthCheck />
 
-      {/* Clubs */}
-      <div className="mt-10">
-        <ClubForm onClubAdded={refreshClubs} />
-      </div>
-      <div className="mt-6">
-        <ClubList ref={clubListRef} />
-      </div>
+        {/* Users */}
+        <div className="mt-6">
+          <UserForm onUserAdded={refreshUsers} />
+        </div>
+        <div className="mt-6">
+          <UserList ref={userListRef} />
+        </div>
 
-      {/* Events */}
-      <div className="mt-10">
-        <EventForm onEventAdded={refreshEvents} />
+        {/* Clubs */}
+        <div className="mt-10">
+          <ClubForm onClubAdded={refreshClubs} />
+        </div>
+        <div className="mt-6">
+          <ClubList ref={clubListRef} />
+        </div>
+
+        {/* Events */}
+        <div className="mt-10">
+          <EventForm onEventAdded={refreshEvents} />
+        </div>
+        <div className="mt-6">
+          <EventList ref={eventListRef} />
+        </div>
+
+        {/* Vacancies */}
+        <div className="mt-10">
+          <VacancyForm onVacancyAdded={refreshVacancies} />
+        </div>
+        <div className="mt-6">
+          <VacancyList ref={vacancyListRef} />
+        </div>
       </div>
-      <div className="mt-6">
-        <EventList ref={eventListRef} />
-      </div>
-      {/* Vacancies */}
-      <div className="mt-10">
-         <VacancyForm onVacancyAdded={refreshVacancies} />
-      </div>
-      <div className="mt-6">
-         <VacancyList ref={vacancyListRef} />
-      </div>
-    </div>
+    </>
   );
 }
 

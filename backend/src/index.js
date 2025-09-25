@@ -19,6 +19,8 @@ const clubRoutes = require('./routes/clubRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const vacancyRoutes = require('./routes/vacancyRoutes');
 const applicationRoutes = require('./routes/applicationRoutes');
+const authRoutes = require('./routes/authRoutes');
+
 
 // Register routes
 app.use('/api/users', userRoutes);
@@ -26,6 +28,9 @@ app.use('/api/clubs', clubRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/vacancies', vacancyRoutes);
 app.use('/api/applications', applicationRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api/vacancies', vacancyRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
